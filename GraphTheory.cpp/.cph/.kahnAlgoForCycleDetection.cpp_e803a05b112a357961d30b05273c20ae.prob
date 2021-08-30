@@ -1,0 +1,1 @@
+{"name":"Local: kahnAlgoForCycleDetection","url":"d:\\Programming\\GraphTheory.cpp\\kahnAlgoForCycleDetection.cpp","tests":[{"id":1625341058943,"input":"5 7\n0 1\n1 2\n2 3\n4 3\n3 1\n3 0\n1 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Programming\\GraphTheory.cpp\\kahnAlgoForCycleDetection.cpp","group":"local","local":true}

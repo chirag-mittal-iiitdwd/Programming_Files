@@ -1,0 +1,1 @@
+{"name":"Local: topologicalSortBFS","url":"d:\\Programming\\GraphTheory.cpp\\topologicalSortBFS.cpp","tests":[{"id":1625317768753,"input":"6 6\n5 0\n4 0\n4 1\n5 2\n2 3\n3 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Programming\\GraphTheory.cpp\\topologicalSortBFS.cpp","group":"local","local":true}
