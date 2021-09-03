@@ -1,0 +1,1 @@
+{"name":"Local: 03_09_PALINT","url":"c:\\Projects\\VsCode\\Programming Files\\Codechef\\03_09_PALINT.cpp","tests":[{"id":1630680964854,"input":"3\n3 2\n1 2 3\n5 100\n1 2 3 4 5\n4 1\n2 2 6 6","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Projects\\VsCode\\Programming Files\\Codechef\\03_09_PALINT.cpp","group":"local","local":true}

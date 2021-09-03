@@ -7,18 +7,13 @@ int main(){
     ll t;
     cin>>t;
     while(t--){
-        ll arr[3];
-        ll d,e;
-        for(int i=0;i<3;i++){
-            cin>>arr[i];
-        }
-        cin>>d>>e;
-        sort(arr,arr+3);
-        if((arr[0]<=e) && (arr[1]+arr[2]<=d)){
-            cout<<"YES\n";
+        int a,b,c,d,e;
+        cin>>a>>b>>c>>d>>e;
+        if((a<=e &&(b+c)<=d)||(b<=e && (c+a<=d))||(c<=e && (a+b)<=d)){
+            cout<<"Yes\n";
         }
         else{
-            cout<<"NO\n";
+            cout<<"No\n";
         }
     }
     return 0;
