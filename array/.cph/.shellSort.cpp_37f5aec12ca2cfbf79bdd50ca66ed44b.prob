@@ -1,0 +1,1 @@
+{"name":"Local: shellSort","url":"c:\\Projects\\VsCode\\Programming Files\\array\\shellSort.cpp","tests":[{"id":1630652744065,"input":"4\n-7 8 -9 0","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Projects\\VsCode\\Programming Files\\array\\shellSort.cpp","group":"local","local":true}
