@@ -13,5 +13,5 @@ int main(){
     //     cout<<"YES"<<endl;
     // }
     unsigned int i = -100;
-cout << i;
+    cout << i;
 }
