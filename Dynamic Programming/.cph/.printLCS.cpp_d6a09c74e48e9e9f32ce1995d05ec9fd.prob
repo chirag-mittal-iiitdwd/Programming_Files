@@ -1,0 +1,1 @@
+{"name":"Local: printLCS","url":"c:\\Projects\\VsCode Workspace\\Programming Files\\Dynamic Programming\\printLCS.cpp","tests":[{"id":1631549659480,"input":"abcdef\nabdcfg","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Projects\\VsCode Workspace\\Programming Files\\Dynamic Programming\\printLCS.cpp","group":"local","local":true}
