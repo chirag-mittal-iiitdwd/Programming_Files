@@ -1,43 +1,55 @@
-#include<bits/stdc++.h>
+#include <iostream>
 using namespace std;
-int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    int t;
-    cin>>t;
-    while(t--){
-        int n,k;
-        cin>>n>>k;
-        int arr[n];
-        vector<int>negativeAndZero;
-        vector<int>positive;
-        for(int i=0;i<n;i++){
-            cin>>arr[i];
-            if(arr[i]<0){
-                negativeAndZero.push_back(arr[i]);
-            }
-            else{
-                positive.push_back(arr[i]);
-            }
-        }
-        for(auto it:positive){
-            cout<<it<<" ";
-        }
-        cout<<endl;
-        int sum=0;
-        sort(negativeAndZero.begin(),negativeAndZero.end());
-        for(int i=0;i<k;i++){
-            negativeAndZero[i]=negativeAndZero[i]*-1;
-            sum+=negativeAndZero[i];
-        }
-        for(auto it:positive){
-            cout<<it<<" ";
-        }
-        cout<<endl;
-        for(int i=0;i<positive.size();i++){
-            sum+=positive[i];
-        }
-        cout<<sum<<endl;
+struct date{
+    int d;
+    int m;
+    int y;
+};
+
+class hospital{
+    char name[100];
+    struct date d_adm;
+    struct date d_dis;
+    public:
+    void getdata(){
+        cout << "Enter name of the patient: ";
+        cin >> name;
+        cout << "Enter date of admission: ";
+        cin >> d_adm.d >> d_adm.m >> d_adm.y;
+        cout << "Enter date of discharge: ";
+        cin >> d_dis.d >> d_dis.m >> d_dis.y;
     }
+
+    void display(){
+        cout << "Patient name: " << name;
+        cout << "Date of admission: " << d_adm.d << d_adm.m << d_adm.y;
+        cout << "Date of discharge: " << d_dis.d << d_dis.m << d_dis.y;
+    }
+};
+
+class age : public hospital{
+    int a;
+    public:
+    void get(){
+        cout << "Enter age: ";
+        cin >> a;
+    }
+
+    void put(){
+        if (a < 12)
+{
+            display();
+            cout << "age: " << a;
+        }
+        else
+            cout << "age greater than 12";
+    }
+};
+int main()
+{
+    age a1;
+    a1.getdata();
+    a1.get();
+    a1.put();
     return 0;
 }
