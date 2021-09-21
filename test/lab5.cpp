@@ -1,55 +1,23 @@
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
-struct date{
-    int d;
-    int m;
-    int y;
-};
 
-class hospital{
-    char name[100];
-    struct date d_adm;
-    struct date d_dis;
-    public:
-    void getdata(){
-        cout << "Enter name of the patient: ";
-        cin >> name;
-        cout << "Enter date of admission: ";
-        cin >> d_adm.d >> d_adm.m >> d_adm.y;
-        cout << "Enter date of discharge: ";
-        cin >> d_dis.d >> d_dis.m >> d_dis.y;
-    }
-
-    void display(){
-        cout << "Patient name: " << name;
-        cout << "Date of admission: " << d_adm.d << d_adm.m << d_adm.y;
-        cout << "Date of discharge: " << d_dis.d << d_dis.m << d_dis.y;
-    }
-};
-
-class age : public hospital{
-    int a;
-    public:
-    void get(){
-        cout << "Enter age: ";
-        cin >> a;
-    }
-
-    void put(){
-        if (a < 12)
-{
-            display();
-            cout << "age: " << a;
+void insertionSort(int arr[],int n){
+    for(int i=1;i<n;i++){
+        int current=arr[i];
+        int j=i-1;
+        while(arr[j]<current && j>=0){
+            arr[j+1]=arr[j]; // Putting the smaller value forward
+            j--;
         }
-        else
-            cout << "age greater than 12";
+        arr[j+1]=current;
     }
-};
-int main()
-{
-    age a1;
-    a1.getdata();
-    a1.get();
-    a1.put();
-    return 0;
+}
+
+int main(){
+    int arr[]={1,-1,9,4,8};
+    int n=5;
+    insertionSort(arr,n);
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
 }
