@@ -1,0 +1,1 @@
+{"name":"Local: quick_sort","url":"c:\\Projects\\VsCode Workspace\\Programming Files\\array\\quick_sort.cpp","tests":[{"id":1632484485821,"input":"4\n9 2 -5 7","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Projects\\VsCode Workspace\\Programming Files\\array\\quick_sort.cpp","group":"local","local":true}
