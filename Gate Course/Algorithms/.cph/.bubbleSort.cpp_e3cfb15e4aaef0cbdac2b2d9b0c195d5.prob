@@ -1,0 +1,1 @@
+{"name":"Local: bubbleSort","url":"c:\\Projects\\VsCode Workspace\\Programming Files\\Gate Course\\Algorithms\\bubbleSort.cpp","tests":[{"id":1633756644146,"input":"4\n9 -7 0 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Projects\\VsCode Workspace\\Programming Files\\Gate Course\\Algorithms\\bubbleSort.cpp","group":"local","local":true}
