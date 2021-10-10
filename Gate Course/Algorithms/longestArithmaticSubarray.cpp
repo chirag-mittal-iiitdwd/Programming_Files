@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff47/00000000003bf4ed#problem
+
 int longestArithmaticSubarray(int arr[],int n){
     // In Constraints we are given that 2<=N
     int maxAns;
