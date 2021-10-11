@@ -3,6 +3,7 @@ using namespace std;
 
 vector<vector<int>> matrixMultiplication(vector<vector<int>>mat1,vector<vector<int>>mat2,int n1,int n2,int n3){
     vector<vector<int>>ansMat(n1,vector<int>(n3));
+    // Multipfying the rows of first matrix with the columns of second matrix and finally add them
     for(int i=0;i<n1;i++){
         for(int j=0;j<n3;j++){
             for(int k=0;k<n2;k++){
