@@ -1,6 +1,9 @@
 #include<bits\stdc++.h>
 using namespace std;
 
+// Time Complexity: O(n log log n)
+// Space Complexity: O(n)
+
 void primeSieve(int n){
     int prime[n+1]={0};
     for(int i=2;i<=n;i++){
