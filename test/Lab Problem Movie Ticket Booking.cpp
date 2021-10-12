@@ -1,3 +1,20 @@
+/*
+    Write and execute a C++ program to demonstrate the working of a movie ticket
+    reservation system for XYZ theater using a class and array of objects. The XYZ theater
+    has 3 kinds of tickets - Silver, Gold, and Platinum, which has 50, 30, and 20 seats and costs
+    Rs. 120, 150 and 200 respectively.
+
+
+    The application should initially show the number of seats booked and a number of seats
+    available for booking. While booking, the user should be prompted to enter the number of
+    seats and the kind of seat for booking and should be displayed the amount he/she has to
+    pay. The booking process should continue until a user no longer wants to book tickets. Use
+    appropriate variables as data members and required member functions to demonstrate this
+    application. Also, the outputs and prompts should be appropriately and clearly displayed
+    so that there is no ambiguity for the user of this application.
+*/
+
+
 #include<bits\stdc++.h>
 using namespace std;
 
