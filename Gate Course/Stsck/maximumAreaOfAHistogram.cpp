@@ -1,6 +1,8 @@
 #include<bits\stdc++.h>
 using namespace std;
 
+// https://www.youtube.com/watch?v=X0X6G-eWgQ8
+
 int largestRectangleArea(vector<int>&height){
     int n=height.size();
     stack<int>st;
