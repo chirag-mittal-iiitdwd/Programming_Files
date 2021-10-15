@@ -2,7 +2,7 @@
 // in a binary tree.
 #include <bits/stdc++.h>
 using namespace std;
-
+unordered_map<string, int> m;
 /* A binary tree node has data, pointer to
 left child and a pointer to right child */
 struct Node
@@ -38,7 +38,7 @@ string inorder(Node *node, unordered_map<string, int> &m)
 // Wrapper over inorder()
 void printAllDups(Node *root)
 {
-    unordered_map<string, int> m;
+    
     inorder(root, m);
 }
 
@@ -65,5 +65,8 @@ int main()
     root->right->left->left = newNode(4);
     root->right->right = newNode(4);
     printAllDups(root);
+    for(auto it:m){
+        cout<<it.first<<" "<<it.second<<endl;
+    }
     return 0;
 }
