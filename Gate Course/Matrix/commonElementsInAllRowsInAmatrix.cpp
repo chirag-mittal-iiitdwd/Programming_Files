@@ -1,21 +1,21 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// vector<int> commonElementsInRows(vector<vector<int>>mat,int r,int c){
-//     unordered_map<int,int>m[r];
-//     for(int i=0;i<r;i++){
-//         for(int j=0;j<c;j++){
-//             m[i][mat[i][j]]++;
-//         }
-//     }
-//     vector<int>ans;
-//     for(int i=0;i<r;i++){
-//         for(auto it:m[i]){
-//             +
-//         }
-//     }
-//     return ans;
-// }
+vector<int> commonElementsInRows(vector<vector<int>>mat,int r,int c){
+    unordered_map<int,int>m;
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            m[mat[i][j]]++;
+        }
+    }
+    vector<int>ans;
+    for(int i=0;i<r;i++){
+        for(auto it:m){
+            
+        }
+    }
+    return ans;
+}
 
 int main(){
     int r,c;
