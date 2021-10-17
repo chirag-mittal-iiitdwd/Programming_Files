@@ -13,6 +13,15 @@ void printPernutations(string str){
     }
 }
 
+vector<string> find_permutation(string str){
+    vector<string>ans;
+    ans.push_back(str);
+    while(next_permutation(str.begin(),str.end())){
+        ans.push_back(str);
+    }
+    return ans;
+}
+
 void printPermuatationsRec(string str,string ans){
     if(str.length()==0){
         cout<<ans<<endl;

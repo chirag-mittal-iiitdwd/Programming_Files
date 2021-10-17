@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
+// substrings
 vector<string> substrings(string str){
     int n=str.length();
     vector<string>ans;
