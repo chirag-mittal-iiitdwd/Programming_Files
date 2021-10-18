@@ -24,6 +24,13 @@ string LCSstring(string x,string y,int n,int m){
     string revAns="";
     int i=n;
     int j=m;
+
+    // Basically what happens while filling the table is that if our characters are equal than we add one to the previous value and write to next value
+    // or else we take the maximum of both the values are store it to the next value
+    // For printing we go in the reverse order
+    // if the characters are eual than we we push it into answer or else we compare the the vales 
+    // if t[i][j-1] is grater than other than we drease the column number
+    // Or else we decrease the row
     while(i>0 && j>0){
         if(x[i-1]==y[j-1]){
             revAns.push_back(x[i-1]);
