@@ -1,0 +1,1 @@
+{"name":"Local: binarySearch","url":"c:\\Projects\\VsCode Workspace\\Programming Files\\Gate Course\\array\\binarySearch.cpp","tests":[{"id":1634910038963,"input":"4 6\n0 8 6 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Projects\\VsCode Workspace\\Programming Files\\Gate Course\\array\\binarySearch.cpp","group":"local","local":true}
