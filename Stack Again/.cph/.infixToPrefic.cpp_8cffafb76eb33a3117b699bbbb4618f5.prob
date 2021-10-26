@@ -1,0 +1,1 @@
+{"name":"Local: infixToPrefic","url":"c:\\Projects\\VsCode Workspace\\Programming Files\\Stack Again\\infixToPrefic.cpp","tests":[{"id":1635271516641,"input":"(a-b/c)*(a/k-l)","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Projects\\VsCode Workspace\\Programming Files\\Stack Again\\infixToPrefic.cpp","group":"local","local":true}
