@@ -1,0 +1,1 @@
+{"name":"Local: redundantParanthesis","url":"c:\\Projects\\VsCode Workspace\\Programming Files\\Stack Again\\redundantParanthesis.cpp","tests":[{"id":1635421041786,"input":"((a+b))","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Projects\\VsCode Workspace\\Programming Files\\Stack Again\\redundantParanthesis.cpp","group":"local","local":true}
