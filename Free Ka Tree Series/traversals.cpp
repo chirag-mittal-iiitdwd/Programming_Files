@@ -237,6 +237,15 @@ vector<vector<int>> allThreeTraversalInOne(node*root){
         4   5 6  7
 */
 
+// Inorder : 4 2 5 1 6 3 7
+// Leaf : 4 5 6 7
+
+// Preorder : 1 2 4 5 3 6 7
+// Leaf : 4 5 6 7
+
+// Postorder : 4 5 2 6 7 3 1
+// Leaf : 4 5 6 7
+
 int main(){
     node*root=new node(1);
     root->left=new node(2);

@@ -48,6 +48,7 @@ vector<int>zigZagTraversal(node*root){
             }
         }
     }
+    return ans;
 }
 
 int main(){
