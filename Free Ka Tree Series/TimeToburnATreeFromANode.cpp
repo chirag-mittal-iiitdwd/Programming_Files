@@ -1,3 +1,6 @@
+/*
+    Here we use level order traversal because we burn the nodes in level order
+*/
 #include<bits/stdc++.h>
 using namespace std;
 
