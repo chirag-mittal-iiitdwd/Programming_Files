@@ -465,3 +465,189 @@ class verticalOrder{
         return ans;
     }
 };
+
+class topViewSolution{
+    public:
+    vector<int>topView(node*root){
+        vector<int>ans;
+        if(root==NULL){
+            return ans;
+        }
+        map<int,int>mp;
+        queue<pair<node*,int>>q;
+        q.push({root,0});
+        while(!q.empty()){
+            auto it=q.front();
+            q.pop();
+            node*n=it.first;
+            int line=it.second;
+            if(mp.find(line)==mp.end()){
+                mp[line]=n->data;
+            }
+            if(n->left){
+                q.push({n->left,line-1});
+            }
+            if(n->right){
+                q.push({n->right,line+1});
+            }
+        }
+        for(auto it:mp){
+            ans.push_back(it.second);
+        }
+        return ans;
+    }
+};
+
+class bottomViewSolution{
+    public:
+    vector<int>bottomView(node*root){
+        vector<int>ans;
+        if(root==NULL){
+            return ans;
+        }
+        map<int,int>mp;
+        queue<pair<node*,int>>q;
+        q.push({root,0});
+        while(!q.empty()){
+            auto it=q.front();
+            q.pop();
+            node*n=it.first;
+            int line=it.second;
+            mp[line]=n->data;
+            if(n->left){
+                q.push({n->left,line-1});
+            }
+            if(n->right){
+                q.push({n->right,line+1});
+            }
+        }
+        for(auto it:mp){
+            ans.push_back(it.second);
+        }
+        return ans;
+    }
+};
+
+class leftViewSolution{
+    void mainLogic(node*root,vector<int>&ans,int level){
+        if(root==NULL){
+            return;
+        }
+        if(level==ans.size()){
+            ans.push_back(root->data);
+        }
+        mainLogic(root->left,ans,level+1);
+        mainLogic(root->right,ans,level+1);
+    }
+    public:
+    vector<int>leftView(node*root){
+        vector<int>ans;
+        mainLogic(root,ans,0);
+        return ans;
+    }
+};
+
+class rightViewSolution{
+    void mainLogic(node*root,vector<int>&ans,int level){
+        if(root==NULL){
+            return;
+        }
+        if(level==ans.size()){
+            ans.push_back(root->data);
+        }
+        mainLogic(root->right,ans,level+1);
+        mainLogic(root->left,ans,level+1);
+    }
+    public:
+    vector<int>rightView(node*root){
+        vector<int>ans;
+        mainLogic(root,ans,0);
+        return ans;
+    }
+};
+
+class pathToNode{
+    bool getPath(vector<int>&ans,int target,node*root){
+        if(root==NULL){
+            return true;
+        }
+        ans.push_back(root->data);
+        if(root->data==target){
+            return true;
+        }
+        if(getPath(ans,target,root->left)||getPath(ans,target,root->right)){
+            return true;
+        }
+        ans.pop_back();
+        return false;
+    }
+    public:
+    vector<int>pathToAnode(node*root,int target){
+        vector<int>ans;
+        getPath(ans,target,root);
+        return ans;
+    }
+};
+
+class lowestCommonAncestor{
+    public:
+    node*lca(node*root,int val1,int val2){
+        if(root==NULL || root->data==val1 || root->data==val2){
+            return root;
+        }
+        node*left=lca(root->left,val1,val2);
+        node*right=lca(root->right,val1,val2);
+        if(left==NULL){
+            return right;
+        }
+        else if(right==NULL){
+            return left;
+        }
+        else{
+            return root;
+        }
+    }
+};
+
+class maxWidth{
+    public:
+    // Just indexing the nodes
+    // Zero based indexing, so if root has index zero then root->left will have 2*i+1 and root->right 2*i+2
+    // Now there is a tendency that twice of the node might go out of interger overflow
+    int maxWidthOfBT(node*root){
+        if(root==NULL){
+            return 0;
+        }
+        int ans=0;
+        queue<pair<node*,int>>q;
+        q.push({root,0});
+        while(!q.empty()){
+            int size=q.size();
+            // minIDX is the smallest indexed node in the level
+            int minIDX=q.front().second;
+            int first,second;
+            for(int i=0;i<size;i++){
+
+                // q.front().second keeps on increasing as we go in level we decrease the minimum value to reduce the indexes such that integer dosn't oveflow
+                int cur_id=q.front().second-minIDX;
+                node*n=q.front().first;
+                q.pop();
+                if(i==0){
+                    first=cur_id;
+                }
+                if(i==size-1){
+                    second=cur_id;
+                }
+                if(n->left){
+                    q.push({n->left,cur_id*2+1});
+                }
+                if(n->right){
+                    q.push({n->right,cur_id*2+2});
+                }
+            }
+            ans=max(ans,second-first+1);
+        }
+        return ans;
+    }
+};
+
