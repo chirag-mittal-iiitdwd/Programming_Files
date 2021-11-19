@@ -1,30 +1,23 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool bfsCycle(vector<int>&visited,vector<vector<int>>adj,int i){
-    queue<pair<int,int>>q;
-    q.push({i,-1});
+bool dfsCycle(vector<int>&visited,vector<vector<int>>adj,int i,int parent){
     visited[i]=1;
-    while(!q.empty()){
-        int top=q.front().first;
-        int prev=q.front().second;
-        q.pop();
-        for(auto it:adj[top]){
-            if(!visited[it]){
-                q.push({it,top});
-                visited[it]=1;
+    for(auto it:adj[i]){
+        if(!visited[it]){
+            if(dfsCycle(visited,adj,it,i)){
+                return true;
             }
-            else{
-                if(it!=prev){
-                    return true;
-                }
+        }
+        else{
+            if(parent!=it){
+                return true;
             }
         }
     }
     return false;
 }
 
-// Time Complexity: O(N), N is number of nodes
 int main(){
     int n,m;
     cin>>n>>m;
@@ -39,7 +32,7 @@ int main(){
     bool ans=false;
     for(int i=1;i<=n;i++){
         if(!visited[i]){
-            ans=bfsCycle(visited,adj,i);
+            ans=dfsCycle(visited,adj,i,-1);
             if(ans){
                 break;
             }
