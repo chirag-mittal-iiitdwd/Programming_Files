@@ -1,0 +1,1 @@
+{"name":"Local: ONP","url":"c:\\Projects\\VsCode Workspace\\Programming Files\\Codechef\\ONP.cpp","tests":[{"id":1637473723897,"input":"3\n(a+(b*c))\n((a+b)*(z+x))\n((a+t)*((b+(a+c))^(c+d)))","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Projects\\VsCode Workspace\\Programming Files\\Codechef\\ONP.cpp","group":"local","local":true}
