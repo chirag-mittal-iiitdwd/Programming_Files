@@ -1,0 +1,1 @@
+{"name":"Local: STRCOMPARE","url":"c:\\Projects\\VsCode Workspace\\Programming Files\\Codechef\\STRCOMPARE.cpp","tests":[{"id":1637594054178,"input":"2\n2\nab\nbb\n3\naaa\naab","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Projects\\VsCode Workspace\\Programming Files\\Codechef\\STRCOMPARE.cpp","group":"local","local":true}
