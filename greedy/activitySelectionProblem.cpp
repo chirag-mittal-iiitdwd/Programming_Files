@@ -12,25 +12,57 @@
 */
 #include<bits/stdc++.h>
 using namespace std;
+
+class Solution{
+    public:
+    vector<pair<int,int>> activitySelectionProblem(vector<pair<int,int>>&p){
+        sort(p.begin(),p.end(),[&](pair<int,int>&a,pair<int,int>&b){
+            return a.second<b.second;
+        });
+        vector<pair<int,int>>ans;
+        int end=0;
+        for(auto &it:p){
+            if(end<=it.first){
+                ans.push_back({it.first,it.second});
+                end=it.second;
+            }
+        }
+        return ans;
+    }
+};
 int main(){
     int n;
     cin>>n;
     vector<pair<int,int>>p;
-    for(int i=0;i<3;i++){
+    for(int i=0;i<n;i++){
         int a,b;
         cin>>a>>b;
         p.push_back({a,b});
     }
-    sort(p.begin(),p.end(),[&](pair<int,int>&a,pair<int,int>&b){
-        return a.second<b.second;
-    });
-    int ans=0;
-    int end=0;
-    for(auto it:p){
-        if(end<=it.first){
-            ans++;
-            end=it.second;
+    // sort(p.begin(),p.end(),[&](pair<int,int>&a,pair<int,int>&b){
+    //     return a.second<b.second;
+    // });
+    // int ans=0;
+    // int end=0;
+    // for(auto it:p){
+    //     if(end<=it.first){
+    //         ans++;
+    //         end=it.second;
+    //     }
+    // }
+    // cout<<ans<<endl;
+    Solution obj;
+    vector<pair<int,int>>ans=obj.activitySelectionProblem(p);
+    if(ans.size()==0){
+        cout<<"No Work Con Be Done\n";
+    }
+    else{
+        cout<<ans.size()<<" Works can be done\n";
+        for(auto &it:ans){
+            cout<<it.first<<" "<<it.second<<endl;
         }
     }
-    cout<<ans<<endl;
+    cout<<endl;
+
+    return 0;
 }
