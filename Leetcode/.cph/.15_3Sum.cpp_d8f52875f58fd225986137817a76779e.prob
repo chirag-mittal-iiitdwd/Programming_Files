@@ -1,0 +1,1 @@
+{"name":"Local: 15_3Sum","url":"c:\\Projects\\VsCode Workspace\\Programming Files\\Leetcode\\15_3Sum.cpp","tests":[{"id":1638957394874,"input":"3\n6\n-1 0 1 2 -1 -4\n0\n1\n0","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Projects\\VsCode Workspace\\Programming Files\\Leetcode\\15_3Sum.cpp","group":"local","local":true}
