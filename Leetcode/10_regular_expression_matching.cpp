@@ -4,68 +4,116 @@ using namespace std;
 // s = the actual string
 // p = pattern
 
+// class Solution {
+// public:
+//     bool isMatch(string s, string p) {
+//         int ns=s.size();
+//         int np=p.size();
+//         bool t[np][ns];
+//         memset(t,-1,sizeof(t));
+
+//         /*
+//             Base cases :
+//             Empty string can match with, Empty pattern  ---> t[0][0]=true;
+//             For the row, meaning for the base cases of the string, 
+//                 everything will be false because empty pattern cannot match with any
+//                 string except and for NULL string we made t[0][0] as true
+            
+//             For the column, meaning for the base case of the pattern,
+//                 everything will be false except for the * characters, because an empty string cannot match with only NULL pattern
+//                 for * we need to check more things, we will check the value at t[i-2][0] and copy it to the * ,
+//                 because empty string can match with the pattern when it is for the form .* the * will make itself NULL character and thus making the . also NULL
+//                 which will now match with the NULL string 
+//         */
+//         t[0][0]=true;
+//         for(int i=1;i<=ns;i++){
+//             t[0][i]=false;
+//         }
+//         for(int i=1;i<=np;i++){
+//             if(p[i]!='*'){
+//                 t[i][0]=false;
+//             }
+//             else{
+//                 // cout<<t[i-1][0]<<endl;
+//                 t[i][0]=t[i-1][0];
+//             }
+//         }
+
+//         /*
+//             Main Logic :
+//             If the character in the string matches with the character in the pattern then we just copy the value at t[i-1][j-1] this will make sure that the previous strings matches with the string
+//             If the character in the pattern is . then again simply copy t[i-1][j-1] because this can make any character out of itself and match with string's current char and like in previous we need to make sure that our string previous to this satisfies the pattern
+//             If the patterns current character is a * then and pattern[i-1] matches with string[j] then the t[i][j] = t[i-2][j] || t[i-1][j],
+//                 why we did this, t[i-2][j] represents the condition when the * in patterns makes itself nothing
+//                 and t[i-1][j] represents the condition when the * has made itself a character and it maches with the char at string, and why we stopped at two only that is because going any further will increase the pattern size and two unequal strings cannot be equal, sometimes the size of string larger than pattern is acceptable because it has capacity to expand and contract itself
+//         */
+
+//         for(int i=1;i<=np;i++){
+//             for(int j=1;j<=ns;j++){
+//                 if(p[i-1]==s[j-1] || p[i-1]=='.'){
+//                     t[i][j]=t[i-1][j-1];
+//                 }
+//                 else{
+//                     if(p[i-1]=='*' && p[i-2]==s[j-1]){
+//                         t[i][j]=t[i][j-1]||t[i-2][j];
+//                     }
+//                     else{
+//                         t[i][j]=t[i-2][j];
+//                     }
+//                 }
+//             }
+//         }
+
+//         // for(int i=0;i<=np;i++){
+//         //     for(int j=0;j<=ns;j++){
+//         //         cout<<t[i][j]<<" ";
+//         //     }
+//         //     cout<<endl;
+//         // }
+//         // cout<<endl;
+//         return t[np][ns];
+//     }
+// };
+
 class Solution {
 public:
-    
-    int DP[32][32];  // <- this is our cache
-        
-    /*
-        The solver function - accepts s, p, and corresponding indices i and j.
-        Both i and j point to characters in s and p THAT SUCCEED THE CURRENT ONES
-        I.e. isMatch(s, p, 3, 2) will process s[2] and p[1]. 
-        This is needed to handle the edge case when i == 0 or j == 0
-    */
-    bool isMatch(const string& s, const string& p, int i, int j) {                      
-        if (DP[i][j] != -1) {
-            // we have a cached result, so just return it!
-            return DP[i][j];
-        }                       
-                        
-        if (i == 0) {
-            // s is empty - so p must be full of wildcards in this case:
-            if (p[j-1] == '*') {
-                return DP[i][j] = isMatch(s, p, i, j-2);
-            } else {
-                // otherwise it doesn't match an empty string
-                return DP[i][j] = false;
+    bool isMatch(string s, string p) {
+        int n=s.size();
+        int m=p.size();
+        int dp[n+1][m+1];
+        memset(dp,0,sizeof(dp));
+        dp[0][0]=1;
+        for(int i=0;i<=n;i++){
+            for(int j=1;j<=m;j++){
+                if(i==0){
+				//if i=0 ,then dp[i][j]=1 if we are be able make p[0,j] of 0 length
+                    if(p[j-1]=='*'){
+                        dp[i][j]|=dp[i][j-2];
+                    }
+                }
+                else{
+                    if(s[i-1]==p[j-1] || p[j-1]=='.'){
+                        dp[i][j]|=dp[i-1][j-1];
+                    }
+                    if(p[j-1]=='*'){
+                         dp[i][j]|=dp[i][j-2];// if we take 0 times  preceding element  
+                        if(s[i-1]==p[j-2] || p[j-2]=='.')dp[i][j]|=dp[i-1][j];
+                    }
+                }
             }
         }
-                
-        if (p[j-1] == '.' || s[i-1] == p[j-1]) {
-            // if last characters match, we move one character back in both the pattern and the string:
-            return DP[i][j] = isMatch(s, p, i-1, j-1);
-        }    
-        
-        if (p[j-1] == '*') {            
-            // if it's a wildcard:
-            if (p[j-2] == '.' || s[i-1] == p[j-2]) {                
-                /* if the wildcard char matches the current string char, there are 3 ways:
-                   1. Ignore the wildcard - go 2 characters back in the pattern
-                   2. Ignore the match - go 1 character back in the string
-                   3. Accept the wildcard - go 2 characters back in the pattern and 1 character back in the string
-                */
-                return DP[i][j] = isMatch(s, p, i, j-2) || isMatch(s, p, i-1, j) || isMatch(s, p, i-1, j-2);
-            }             
-            // The wildcard does not match - so we have to ignore it. Going 2 characters back in the pattern
-            return DP[i][j] = isMatch(s, p, i, j-2);
-        }
-        
-        // We've tried all we could. No match by default.
-        return DP[i][j] = false;
-    }
-    
-    bool isMatch(const string& s, const string& p) {
-        // Initializing the cache with -1
-        for (int i = 0; i < 32; ++i) {
-            DP[i][0] = false;
-            for (int j = 1; j < 32; ++j) {                
-                DP[i][j] = -1;
-            }
-        }        
-        
-        DP[0][0] = true;
-        
-        // Calling the solver
-        return isMatch(s, p, s.length(), p.length());    
+        return dp[n][m];
     }
 };
+
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        string s,p;
+        cin>>s>>p;
+        Solution obj;
+        cout<<obj.isMatch(s,p)<<endl;
+    }
+}
