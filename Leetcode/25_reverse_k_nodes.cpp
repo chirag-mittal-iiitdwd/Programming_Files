@@ -26,7 +26,6 @@ class Solution {
         if(head==NULL){
             return NULL;
         }
-        static 
         ListNode*prev=NULL;
         ListNode*cur=head;
         ListNode*nextptr;
@@ -38,14 +37,23 @@ class Solution {
             cur=nextptr;
             cnt++;
         }
-        if(nextptr!=NULL){
-            head->next=helper(nextptr,k);
+        left-=k;
+        if(nextptr!=NULL && left>=k){
+            head->next=helper(nextptr,k,left);
+        }
+        else{
+            ListNode*temp=prev;
+            while(temp->next!=NULL){
+                temp=temp->next;
+            }
+            temp->next=nextptr;
         }
         return prev;
     }
 
     public:
     ListNode* reverseKGroup(ListNode* head, int k) {
-        
+        int len=length(head);
+        return helper(head,k,len);
     }
 };
