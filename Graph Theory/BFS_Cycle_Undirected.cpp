@@ -3,18 +3,19 @@ using namespace std;
 
 class Solution{
     bool bfsHelper(vector<int>&visited,vector<vector<int>>&adj,int&i){
-        queue<int>q;
-        q.push(i);
+        queue<pair<int,int>>q;
+        q.push({i,-1});
         visited[i]=1;
         while(!q.empty()){
-            int cur=q.front();
+            int cur=q.front().first;
+            int par=q.front().second;
             q.pop();
             for(auto &it:adj[cur]){
                 if(!visited[it]){
-                    q.push(it);
+                    q.push({it,i});
                     visited[it]=1;
                 }
-                else{
+                else if(it!=par){
                     return true;
                 }
             }
