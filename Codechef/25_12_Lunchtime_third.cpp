@@ -20,11 +20,6 @@ int main(){
         ll maxVal=(cpy[n-1]-cpy[0]);
         vector<int>dp(n,0);
 
-        // cout<<"Before Any Operation : ";
-        // for(auto &it:arr){
-        //     cout<<it<<" ";
-        // }
-        // cout<<endl;
         ll i=0;
         while(i<n-1){
             if(arr[i]==cpy[i]){
@@ -44,11 +39,6 @@ int main(){
                 }
             }
             sort(arr.begin()+j+1,arr.end()-(n-i-1));
-            // cout<<"at "<<i<<" : ";
-            // for(auto &it:arr){
-            //     cout<<it<<" ";
-            // }
-            // cout<<endl;
             dp[i]=(arr[i]-arr[j+1]);
             i=j+1;
         }
