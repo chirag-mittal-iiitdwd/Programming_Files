@@ -1,40 +1,37 @@
 #include<bits/stdc++.h>
-#define ll long long int
 using namespace std;
 
-// Native Approach : Time Complexity : O(N)
-bool isPrime(int n){
-    if(n==1){
+// Time Complexity : O(N)
+bool is_prime(int n){
+    if(n<=1){
         return false;
     }
     for(int i=2;i<n;i++){
-        if(n%i==0){
+        if((n%i)==0){
             return false;
         }
     }
+
     return true;
 }
 
-// This can be easily prooved that when we factorise a number it has two factors
-// One has to be <=sqrt(n) and the other above sqrt(n)
-// So here we can run a for loop till sqrt(n) and check for prime
-// Time Complexity : O(sqrt(N))
-bool isPrimeOptimised(int n){
-    if(n==1){
+// Based on the fact that if the number is divisible by any number less than the sqrt(n) than its not a prime
+// Because the divisors always exists in pairs one will be above sqrt(n) and other will be below sqrt(n)
+// Thus if we check for one of them then other is automatically checked
+
+bool is_prime_opti(int n){
+    if(n<=1){
         return false;
     }
     for(int i=2;i*i<=n;i++){
-        if(n%i==0){
+        if((n%i)==0){
             return false;
         }
     }
+
     return true;
 }
 
 int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    
-    return 0;
+
 }
