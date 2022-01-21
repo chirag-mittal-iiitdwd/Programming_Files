@@ -16,10 +16,6 @@ class queue{
     }
 
     int pop(){
-        if(s1.empty()){
-            cout<<"QUEUE IS EMPTY\n";
-            return INT_MAX;
-        }
         int x=s1.top();
         s1.pop();
         if(s1.empty()){
