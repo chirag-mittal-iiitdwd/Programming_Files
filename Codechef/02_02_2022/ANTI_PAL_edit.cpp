@@ -26,39 +26,34 @@ int32_t main(){
     int t;
     cin>>t;
     while(t--){
-        int x,a,b;
-        cin>>x>>a>>b;
-
-        int n=x*b;
-        if(n%a==0){
-            n/=a;
-        }
-        else{
-            cout<<-1<<"\n";
+        int n;
+        cin>>n;
+        string str;
+        cin>>str;
+        if(n&1){
+            cout<<"NO\n";
             continue;
         }
 
-        if(n>x){
-            cout<<-1<<"\n";
+        vector<int>cnt(26,0);
+        for(auto&it:str){
+            cnt[it-'a']++;
+        }
+        int max_cnt=*max_element(cnt.begin(),cnt.end());
+        if(max_cnt>(n/2)){
+            cout<<"NO\n";
             continue;
         }
 
-        int sum=0;
-        for(int i=1;i*i<=n;i++){
-            if(n%i==0){
-                sum+=i;
-                if(i*i!=n){
-                    sum+=n/i;
-                }
+        cout<<"YES\n";
+        string ans{""};
+        for(int i=0;i<26;i++){
+            if(cnt[i]>0){
+                ans+=string(cnt[i],char(i+'a'));
             }
         }
-
-        if(sum==x){
-            cout<<n<<"\n";
-        }
-        else{
-            cout<<-1<<endl;
-        }
+        reverse(ans.begin(),ans.begin()+(n/2));
+        cout<<ans<<endl;
     }
     return 0;
 }

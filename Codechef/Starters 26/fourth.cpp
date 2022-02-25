@@ -26,38 +26,24 @@ int32_t main(){
     int t;
     cin>>t;
     while(t--){
-        int x,a,b;
-        cin>>x>>a>>b;
-
-        int n=x*b;
-        if(n%a==0){
-            n/=a;
-        }
-        else{
-            cout<<-1<<"\n";
-            continue;
-        }
-
-        if(n>x){
-            cout<<-1<<"\n";
-            continue;
-        }
-
-        int sum=0;
-        for(int i=1;i*i<=n;i++){
-            if(n%i==0){
-                sum+=i;
-                if(i*i!=n){
-                    sum+=n/i;
-                }
+        int n,x;
+        cin>>n;
+        int odd=0,even=0;
+        for(int i=0;i<2*n;i++){
+            cin>>x;
+            if(x&1){
+                odd++;
+            }
+            else{
+                even++;
             }
         }
 
-        if(sum==x){
-            cout<<n<<"\n";
+        if((odd&1)==0 && (even&1)==0){
+            cout<<"YES\n";
         }
         else{
-            cout<<-1<<endl;
+            cout<<"NO\n";
         }
     }
     return 0;
