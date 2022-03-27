@@ -54,3 +54,93 @@ public:
         }
     }
 };
+
+
+// class sol2{
+//     int findPivot(vector<int>&nums,int target,int l,int r){
+//         if(l>r){
+//             return -1;
+//         }
+//         if(l==r){
+//             return l;
+//         }
+//         int mid=(l+r)/2;
+//         if(nums[mid]==target){
+//             return mid;
+//         }
+//         else if(mid<r && nums[mid+1]<nums[mid]){
+//             return mid;
+//         }
+//         else if(mid>l && nums[mid-1]>nums[mid]){
+//             return mid-1;
+//         }
+//         else if(nums[l]<nums[mid]){
+//         // First part is sorted and the pivot is in second part 
+//             l=mid+1;
+//         }
+//         else{
+//             r=mid-1;
+//         }
+//     }
+//     public:
+//     int search(vector<int>&nums,int target){
+//         int n=nums.size();
+//         int pivot=findPivot(nums,target,0,n-1);
+
+//         if(nums[pivot]==target){
+//             return pivot;
+//         }
+//         else if(nums[0]>target){
+//             cout<<"Second Half\n"<<endl;
+//         }
+//     }
+// };
+
+class Solution {
+    int binary_search(vector<int>&nums,int l,int r,int target){
+        if(l>r){
+            return -1;
+        }
+        int mid=(l+r)/2;
+        if(nums[mid]==target){
+            return mid;
+        }
+        else if(nums[mid]>target){
+            return binary_search(nums,l,mid-1,target);
+        }
+        return binary_search(nums,mid+1,r,target);
+    }
+    int findPivot(vector<int>&nums,int l,int r){
+        if(l>r){
+            return -1;
+        }
+        if(l==r){
+            return l;
+        }
+
+        int mid=(l+r)/2;
+        if(mid<r && nums[mid+1]<nums[mid]){
+            return mid;
+        }
+        else if(l<mid && nums[mid-1]>nums[mid]){
+            return mid-1;
+        }
+        else if(nums[l]>nums[mid]){
+            return findPivot(nums,l,mid-1);
+        }
+        return findPivot(nums,mid+1,r);
+    }
+public:
+    int search(vector<int>& nums, int target) {
+        int l=0,r=nums.size()-1;
+        int pivot=findPivot(nums,l,r);
+
+        if(nums[pivot]==target){
+            return pivot;
+        }
+        else if(nums[0]>target){
+            return binary_search(nums,pivot+1,r,target);
+        }
+        return binary_search(nums,0,pivot,target);
+    }
+};

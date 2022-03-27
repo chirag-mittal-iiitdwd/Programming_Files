@@ -1,0 +1,1 @@
+{"name":"Local: template","url":"c:\\Users\\chira\\Desktop\\Projects\\Programming Files\\template.cpp","tests":[{"id":1646668968849,"input":"4\n3 2\n3 5\n5 6\n4 10","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\chira\\Desktop\\Projects\\Programming Files\\template.cpp","group":"local","local":true}
