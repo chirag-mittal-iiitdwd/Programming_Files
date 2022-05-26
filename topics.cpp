@@ -1,21 +1,4 @@
 #include<bits/stdc++.h>
-/*
-    Soring
-    Stack
-    Queue
-    Dynamic Programming
-    Backtracking
-    Linked List
-    Sliding Window
-    Tree
-    Two Pointer
-    Binary Search
-    Maths
-    Graph
-    Greedy
-    Heaps
-    Hashing
-*/
 using namespace std;
 #define int long long int
 #define mod 1000000007

@@ -33,6 +33,44 @@ public:
     }
 };
 
+
+class Solution {
+public:
+    int longestValidParentheses(string s) {
+        if(s.length()<2){
+            return 0;
+        }
+
+        stack<int>st;
+
+        for(int i=0;i<s.length();i++){
+            if(s[i]=='('){
+                st.push(i);
+            }
+            else{
+                if(!st.empty() && s[st.top()]=='('){
+                    st.pop();
+                }
+                else{
+                    st.push(i);
+                }
+            }
+        }
+
+        int maxLen=0;
+        int endTerminal=s.length();
+
+        while(!st.empty()){
+            int startTerminal=st.top();
+            st.pop();
+            maxLen=max(maxLen,endTerminal-startTerminal-1);
+            endTerminal=startTerminal;
+        }
+
+        return max(endTerminal,maxLen);
+    }
+};
+
 int main(){
 
 }

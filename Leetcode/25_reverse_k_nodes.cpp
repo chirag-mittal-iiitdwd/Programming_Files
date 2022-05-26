@@ -57,3 +57,32 @@ class Solution {
         return helper(head,k,len);
     }
 };
+
+
+class Solution {
+    ListNode*reverse(ListNode*head,ListNode*end){
+        ListNode*prev=end;
+        ListNode*cur=head;
+        ListNode*next;
+        while(cur!=end){
+            next=cur->next;
+            cur->next=prev;
+            prev=cur;
+            cur=next;
+        }
+        return prev;
+    }
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        auto node=head;
+        for(int i=0;i<k;i++){
+            if(node==NULL){
+                return head;
+            }
+            node=node->next;
+        }
+        ListNode*newHead=reverse(head,node);
+        head->next=reverseKGroup(node,k);
+        return newHead;
+    }
+};

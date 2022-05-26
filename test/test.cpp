@@ -1,46 +1,67 @@
 #include<bits/stdc++.h>
-#include<chrono>
 using namespace std;
-using namespace std::chrono;
+#define int long long int
+#define mod 1000000007
 
-class Solution {
-public:
-    string reverseBits(uint32_t n) {
-        uint64_t ans=0;
-        string ans1;
-        vector<int>arr(32,0);
-        for(int i=0;i<=63;i++){
-            bool x=n&(1<<63-i);
-            if(x){
-                arr[i]=1;
-            }
-            else{
-                arr[i]=0;
-            }
-            for(auto &it:arr){
-                cout<<it<<" ";
-            }
-            cout<<endl;
-            // cout<<ans1<<endl;
-            // ans=ans|(x<<i);
-        }
-        return ans1;
+bool solve(vector<vector<int>>&mat,int n,int m){
+    if(mat[0][0]!=mat[n-1][m-1]){
+        return false;
     }
-};
+
+    // if(n<=m){
+        for(int i=1;i<n || i<m;i++){
+            int x=i,y=0;
+            while(x>=0 && y<m){
+                // (x,y) (x-1,y) (x,y-1)
+                if(x-1>=0 && mat[x][y]>=mat[x-1][y]){
+                    return false;
+                }
+                if(y-1>=0 && mat[x][y]>=mat[x][y-1]){
+                    return false;
+                }
+                x--;
+                y++;
+            }
+        }
+
+        for(int i=1;i<m || i<n;i++){
+            int x=n-i,y=i;
+            while(x>=0 && y<m){
+                if(x-1>=0 && mat[x][y]>=mat[x-1][y]){
+                    return false;
+                }
+                if(y-1>=0 && mat[x][y]>=mat[x][y-1]){
+                    return false;
+                }
+                x--;
+                y++;
+            }
+        }
+        return true;
+    // }
+}
 
 int32_t main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    uint64_t n=9223372036854775807;
-    Solution obj;
+    int t;
+    cin>>t;
+    while(t--){
+        int n,m;
+        cin>>n>>m;
+        vector<vector<int>>mat(n,vector<int>(m));
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                cin>>mat[i][j];
+            }
+        }
 
-    auto start = high_resolution_clock::now();
-    cout<<obj.reverseBits(n)<<endl;
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
-    cout<<duration.count()<<endl;
-
-
-    return 0;
+        if(solve(mat,n,m)){
+            cout<<"YES\n";
+        }
+        else{
+            cout<<"NO\n";
+        }
+    }
 }

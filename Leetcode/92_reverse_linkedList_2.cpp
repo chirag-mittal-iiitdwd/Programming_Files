@@ -1,55 +1,47 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-class ListNode{
-    public:
+class ListNode
+{
+public:
     int val;
-    ListNode*next;
+    ListNode *next;
+    ListNode(int data)
+    {
+        val = data;
+        next = NULL;
+    }
 };
 
-class Solution {
-    ListNode*reverse(ListNode*head,ListNode*right,ListNode*rightPlus){
-        ListNode*prev=rightPlus;
-        ListNode*cur=head;
-        ListNode*next;
-
-        while(prev!=right){
-            next=cur->next;
-            cur->next=prev;
-            prev=cur;
-            cur=next;
-        }
-        return prev;
-    }
+class Solution{
 public:
-    ListNode* reverseBetween(ListNode* head, int left, int right) {
-        if(left==right){
+    ListNode *reverseBetween(ListNode *head, int left, int right){
+        if (head == NULL || head->next == NULL){
             return head;
         }
 
-        left--;
-        right--;
-        int pos=0;
-        ListNode*leftP=NULL;
-        ListNode*rightP=NULL;
-        ListNode*rightPlus=NULL;
-        ListNode*temp=head;
-        if(pos==left){
-            
-        }
-        while(temp!=NULL){
-            if((pos+1)==left){
-                leftP=temp;
-            }
-            else if(pos==right){
-                rightP=temp;
-            }
-            else if(rightP!=NULL){
-                rightPlus=temp;
-            }
-            pos++;
-            temp=temp->next;
+        ListNode* dummy = new ListNode(-1);
+        dummy->next = head;
+        ListNode* it = dummy;
+        ListNode* prevIt = NULL;
+
+        for (int i = 0; i < left; i++){
+            prevIt = it;
+            it = it->next;
         }
 
+        ListNode* itR = it;
+        ListNode* prevR = prevIt;
+        for (int i = left; i <= right; i++){
+            ListNode* forward = itR->next;
+            itR->next = prevR;
+            prevR = itR;
+            itR = forward;
+        }
+
+        prevIt->next = prevR;
+        it->next = itR;
+
+        return dummy->next;
     }
 };
