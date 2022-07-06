@@ -52,13 +52,13 @@ void inorderPrint(node*root){
         return;
     }
     inorderPrint(root->left);
-    cout<<root->data<<" ";
     inorderPrint(root->right);
+    cout<<root->data<<" ";
 }
 
 int main(){
-    vector<int>inorder={40,20,50,10,60,30};
-    vector<int>preorder={10,20,40,50,30,60};
+    vector<int>inorder={10, 50, 60 ,90 ,93 ,95, 99, 100, 125, 130, 135 ,150 ,180, 200, 250};
+    vector<int>preorder={100,90,50,10,60,95,93,99,150,130,125,135,200,180,250};
     Solution obj;
     node*root=obj.buildTree(preorder,inorder);
     inorderPrint(root);

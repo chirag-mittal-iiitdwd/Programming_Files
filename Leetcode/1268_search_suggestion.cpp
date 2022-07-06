@@ -126,17 +126,23 @@ class Solution {
 public:
     vector<vector<string>> suggestedProducts(vector<string>& products, string searchWord) {
         sort(products.begin(),products.end());
-        vector<string>ans;
-        string curSearch="";
+        vector<vector<string>>ans;
 
         for(int i=0;i<searchWord.size();i++){
-            curSearch+=searchWord[i];
-            vector<string>suggested;
-            auto it=lower_bound(products.begin(),products.end(),curSearch);
-            for(int i=0;i<3 && it+i!=products.end();i++){
-                string res=*(it+i);
-                if(res.find())
+            string curSearch=searchWord.substr(0,i+1);
+
+            vector<string>curAns;
+            int sugCnt=0;
+
+            for(auto&it:products){
+                if(sugCnt<3 && it.find(curSearch)==0){
+                    curAns.push_back(it);
+                    sugCnt++;
+                }
             }
+
+            ans.push_back(curAns);
         }
+        return ans;
     }
 };

@@ -19,11 +19,11 @@ class Solution {
         cnt++;
         int leftVal=sumTree(root->left,cnt);
         int rightVal=sumTree(root->right,cnt);
-        return root->val=(root->val+leftVal+rightVal);
+        return (root->val+leftVal+rightVal);
     }
     void helper(TreeNode*&root,int&ans){
         if(root==NULL){
-            return;
+            return; 
         }
         int cnt=0;
         int avg=sumTree(root,cnt)/cnt;
@@ -38,5 +38,28 @@ public:
         int ans=0;
         helper(root,ans);
         return ans;
+    }
+};
+
+class Solution {
+    int cnt=0;
+    pair<int,int>helper(TreeNode*root){
+        if(root==NULL){
+            return {0,0};
+        }
+
+        pair<int,int>leftVal=helper(root->left);
+        pair<int,int>rightVal=helper(root->right);
+        int sum=root->val+leftVal.first+rightVal.first;
+        int n=1+leftVal.second+rightVal.second;
+        if((sum/n)==root->val){
+            cnt++;
+        }
+        return {sum,n};
+    }
+public:
+    int averageOfSubtree(TreeNode* root) {
+        helper(root);
+        return cnt;
     }
 };

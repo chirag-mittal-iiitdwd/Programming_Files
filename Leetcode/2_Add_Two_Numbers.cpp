@@ -2,7 +2,7 @@
 using namespace std;
 
 // class node{
-//     public:
+//     publicw:
 //     int data;
 //     node*next;
 //     node(int val){
